@@ -1,0 +1,23 @@
+nodemon beobachtet die app.js und builded bei Bedarf neu
+console: npm run start
+
+(package.json.default-fuer.neues.projekt-danach-nur-npm-install)
+
+
+Beispiel app.js  :
+'use strict'
+//let express = require('express')
+import express from 'express' // ist es6! kennt node so nicht, muss transpiliert werden !!
+
+let app = express()
+
+// respond with "hello world" when a GET request is made to the homepage
+app.get('/', function (req, res) {
+    res.send('hello world 2')
+})
+app.listen(3100)
+
+// OK Projekt neu aufsezten OHNE su!, sonst sind viele Files gesperrt
+
+
+
