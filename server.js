@@ -1,7 +1,6 @@
 /**
  * http://nodecode.de/chat-nodejs-websocket
- * Created by rk on 21.05.17.
- * m anschließend den Server zu starten, musst du den Befehl node server.js eingeben.
+ * den Server zu starten, musst du den Befehl node server.js eingeben.
  * Danach ist die Anwendung über die Adresse http://127.0.0.1:8080/ zu erreichen.
  */
 var express = require('express')
@@ -45,6 +44,8 @@ io.sockets.on('connection', function (socket) {
     socket.on('chat', function (data) {
         // so wird dieser Text an alle anderen Benutzer gesendet
         io.sockets.emit('chat', { zeit: new Date(), name: data.name || 'Anonym', text: data.text + ", sent from client id "+socket.id});
+        // URKA: zum caller selbst auch noch etwas senden (zusaetzlich)
+        socket.emit('chat', { zeit: new Date(), text: '*** das ist nur fuer dich! streng geheim ****' +socket.id });
     });
 });
 
