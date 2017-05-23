@@ -2,6 +2,12 @@
  * http://nodecode.de/chat-nodejs-websocket
  * den Server zu starten, musst du den Befehl node server.js eingeben.
  * Danach ist die Anwendung über die Adresse http://127.0.0.1:8080/ zu erreichen.
+ *
+ * Log:
+ *  Request URL:ws://127.0.0.1:8080/socket.io/?EIO=3&transport=websocket&sid=JP49prWUQRTigpI7AAAA
+ *  Request Method:GET
+ *  Status Code:101 Switching Protocols
+ *
  */
 var express = require('express')
     ,   app = express()
@@ -24,6 +30,13 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function (req, res) {
     // so wird die Datei index.html ausgegeben
     res.sendfile(__dirname + '/public/index.html');
+});
+
+// URKA, fuer android
+app.get('/android', function (req, res) {
+    // so wird die Datei index.html ausgegeben
+    //res.sendfile(__dirname + '/public/index.html');
+    res.send("hallo");
 });
 
 // URKA: wir merken uns den Client (unique id)
